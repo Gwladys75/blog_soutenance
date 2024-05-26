@@ -33,36 +33,33 @@ if (!empty($_POST)) {
 
 
 
-
-
-
 require_once 'inc/header.inc.php';
 // echo $info;
 ?>
 
 <!-- Le formulaire d'ajout pour les produits  -->
 <main>
-  <div class="container container-ajout-post">
-    <div class="row justify-content-center">
+<div class="container ">
+    <div class="row justify-content-center mt-5 pt-5 mb-5 pb-5">
       <div class="col-md-8">
-        <h2 class="text-center mb-5">AJOUTER UN ARTICLE</h2>
+        <h2 class="text-center mt-5 pt-5 ">AJOUTER UNE ANNONCE</h2>
 
         <form action="#" method="post" enctype="multipart/form-data">
-          <div class="mb-3 text-center">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" class="form-control formu-post" id="image" name="image">
+          <div class="mb-3 mt-4 pt-4 text-center">
+            <label for="image" class="form-label">Image article</label>
+            <input type="file" class="form-control" id="image" name="image">
           </div>
           <div class="mb-3 text-center">
-            <label for="titre" class="form-label">Titre de l'article</label>
-            <input type="text" class="form-control formu-post" id="titre" placeholder="Entrez le nom de l'article" name="title">
-          </div>
+            <label for="title " class="form-label">Titre article</label>
+            <input type="text" class="form-control" id="title" placeholder="Entrez le titre de l'article" name="title">
+     </div>
           <div class="mb-3 text-center">
-            <label for="content" class="form-label">Contenu de l'article</label>
-            <textarea class="form-control formu-article" id="content" rows="10" placeholder="Entrez le contenu de l'article" name="content"></textarea>
+            <label for="content " class="form-label">Contenu article</label>
+            <textarea class="form-control" id="content" rows="10" placeholder="Entrez la description de l'annonce" name="content"></textarea>
           </div>
-        
+         
           <div class="d-flex justify-content-center mb-5">
-            <button type="submit" class="btn">Ajouter article</button>
+            <button type="submit" class="btn-form">Ajouter article</button>
           </div>
         </form>
       </div>
