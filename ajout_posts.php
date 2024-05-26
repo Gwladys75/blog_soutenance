@@ -45,7 +45,7 @@ require_once 'inc/header.inc.php';
   <div class="container container-ajout-post">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <h2 class="text-center">AJOUTER UN ARTICLE</h2>
+        <h2 class="text-center mb-5">AJOUTER UN ARTICLE</h2>
 
         <form action="#" method="post" enctype="multipart/form-data">
           <div class="mb-3 text-center">
