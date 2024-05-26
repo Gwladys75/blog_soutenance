@@ -1,0 +1,616 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+
+}
+
+
+body {
+  font-family: 'handlee', cursive;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background: url("../img/Allee3.jpg") fixed no-repeat;
+  /* background-repeat: no-repeat; */
+  opacity: 30px;
+
+
+}
+
+
+img {
+  max-width: 100%;
+}
+
+ /* ROOT QUI CIBLE LA RACINE DE MA PAGE HTML  */
+
+:root {
+ --marron-nav: #c8953ecc;
+ --marron-jaune: #C8953E;
+ --jaune: #FFC304;
+ --marron-clair: #AD7406;
+ --marron-cofee: #76480A;
+ --marron-fonce: #423604;
+ --blanc:#FAFFF5;
+
+
+
+}
+
+/* header.inc.php avec ma barre de navigation, mon logo, mes menus et mes icônes */
+
+
+.navigation {
+  /* position: fixed; */
+  
+  width: 100%; 
+  height: 30vh;
+  background-color: var(--marron-clair);
+  padding: 40px;
+
+}
+
+nav a {
+  color: var(--blanc);
+}
+
+.nav-link:hover{
+  color: var(--jaune)!important;
+}
+
+
+
+.logo {
+  width: 13% !important;
+
+ /* padding-top: 5px;
+ margin-top: 20px; */
+}
+
+.nav-item {
+  padding: 20px;
+  color: #fff;
+  padding: 20px;
+}
+
+.nav-link {
+  color: #fff;
+  font-weight: 800;
+}
+
+/* .active {
+  color:chocolate;
+} */
+
+a.nav-link-toggler
+
+ {
+  width: 25%;
+  background-color: var(--blanc);
+}
+
+
+
+
+  
+
+
+
+/* icones */
+.bi-disc-fill,
+.bi-person-square,
+.bi-bag-fill,
+.bi-search {
+  font-size:1.5rem;
+}
+
+
+.bi-person-square,
+.bi-bag-fill,
+.bi-search {
+  color: var(--blanc);
+  padding: 25px;
+}
+
+/* HOVER DES ICONES  */
+
+.bi-disc-fill:hover,
+.bi-person-square:hover,
+.bi-bag-fill:hover,
+.bi-search:hover {
+  color: var(--jaune);
+}
+
+.bi-person-square:hover,
+.bi-bag-fill:hover {
+  color: var(--jaune);
+
+}
+
+
+
+/* TEXTES PARAGRAPHES  TITRES  */
+h1,
+h2,
+p {
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  padding: 5px;
+  color:var(--blanc);
+  /* color: black; */
+
+}
+
+
+p {
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(241, 240, 240, 0.189) !important;
+
+}
+
+
+.titre {
+    margin-bottom: 30px !important;
+    
+}
+
+
+/* INC FOOTER */
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--blanc);
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+a:hover{
+  color: var(--jaune)!important;
+  transition: 0.3s;
+}
+
+.bi-facebook,
+.bi-github{
+  /* display: flex; */
+  /* padding: 6px; */
+  font-size: 3rem;
+  color: var(--blanc);
+  padding: 5px;
+}
+
+.bi-facebook:hover,
+.bi-github:hover{
+  color: var(--jaune);
+  transition: 0.3s;
+}
+
+
+
+
+
+
+
+
+
+footer {
+  display: flex;
+  height: 30vh;
+  width: 100%;
+ background-color: var(--marron-clair) !important;
+ align-items: center;
+ margin-top: 50px;
+
+
+}
+
+.liens-menus {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  margin-left: 60px;
+  
+
+
+}
+
+.logo-footer {
+  width:  10%;
+
+}
+
+.social {
+  align-items: flex-end
+;
+}
+/* PAGE HISTOIRE DU GWOKA  */
+
+.brown {
+  width: 70%;
+  margin: auto
+}
+/* 
+SECTION IMAGES POLAROIDES ET TEXTES */
+
+
+
+
+.polaroid {
+  background-color: var(--blanc);
+  border-radius: 5px;
+  border-left: 20px solid var(--blanc);
+  border-right: 20px solid var(--blanc) ;
+  border-top:20px solid var(--blanc) ;
+  border-bottom: 15px solid var(--blanc);
+
+}
+
+.polaroid:hover{
+transform: scale(1.5);
+transition: 0.5s;
+}
+
+
+
+
+.text-pola {
+  color: var(--marron-fonce);
+
+}
+
+.text-pola:hover {
+  color:var(--marron-clair);
+}
+
+/* ROTATION DES POLAROIDS */
+
+.rotate1 {
+transform : rotate(15deg);
+
+}
+
+.rotate2 {
+  transform : rotate(-15deg);
+}
+
+.rotate3 {
+  transform : rotate(15deg);
+}
+
+
+
+
+
+
+/* 
+PAGE LES 7 RYTHMES */
+
+
+.container-gallery {
+  width: 70%;
+  height: 100vh;
+  margin: auto;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: (7 / 1fr);
+  grid-template-rows: (7 / 1fr);
+  gap: 15px 15px;
+  grid-auto-flow: row;
+  grid-template-areas:
+      "PHOTO1 PHOTO1 PHOTO1 PHOTO1 PHOTO2 PHOTO2 PHOTO2"
+      "PHOTO1 PHOTO1 PHOTO1 PHOTO1 PHOTO2 PHOTO2 PHOTO2"
+      "PHOTO3 PHOTO3 PHOTO6 PHOTO6 PHOTO6 PHOTO4 PHOTO4"
+      "PHOTO3 PHOTO3 PHOTO6 PHOTO6 PHOTO6 PHOTO4 PHOTO4"
+      "PHOTO3 PHOTO3 PHOTO6 PHOTO6 PHOTO6 PHOTO4 PHOTO4"
+      "PHOTO5 PHOTO5 PHOTO5 PHOTO7 PHOTO7 PHOTO7 PHOTO7"
+      "PHOTO5 PHOTO5 PHOTO5 PHOTO7 PHOTO7 PHOTO7 PHOTO7";
+  /* border: 2px solid red; */
+}
+
+.PHOTO1 {
+  grid-area: PHOTO1;
+  border-radius: 10px;
+  /* border: 2px solid red; */
+  background-image: url("../img/1rythme.jpg");
+  background-repeat: no-repeat;
+    /* background-image:url(background.jpg);
+    background-repeat: no-repeat;
+    _background-attachment : fixed; */
+  
+
+
+}
+
+.PHOTO2 {
+  grid-area: PHOTO2;
+  /* border: 2px solid blue; */
+  border-radius: 10px;
+  background: url("../img/1rythme.jpg") center/cover;
+  background-repeat: no-repeat;
+}
+
+.PHOTO3 {
+  grid-area: PHOTO3;
+  /* border: 2px solid purple; */
+  border-radius: 10px;
+  background: url("../img/2rythme.png") center/cover;
+  background-repeat: no-repeat;
+}
+
+.PHOTO5 {
+  grid-area: PHOTO5;
+  /* border: 2px solid black; */
+  border-radius: 10px;
+  background: url("../img/2rythme.png") center/cover;
+  background-repeat: no-repeat;
+}
+
+.PHOTO6 {
+  grid-area: PHOTO6;
+  /* border: 2px solid yellow; */
+  border-radius: 10px;
+  background: url("../img/3rythme.png") center/cover;
+  background-repeat: no-repeat;
+
+}
+
+.PHOTO4 {
+  grid-area: PHOTO4;
+  /* border: 2px solid brown; */
+  border-radius: 10px;
+  background: url("../img/5rythme.png") center/cover;
+  background-repeat: no-repeat;
+}
+
+.PHOTO7 {
+  grid-area: PHOTO7;
+  /* border: 2px solid red; */
+  border-radius: 10px;
+  background: url("../img/5rythme.png") center/cover;
+  background-repeat: no-repeat;
+
+
+}
+
+
+
+
+.flip-container {
+  perspective: 1000;
+  background: transparent;
+  margin: 100px auto;
+}
+
+/* flip the picture when hover */
+
+.flip-container:hover .flipper,
+.flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+/* .flip-container,
+.front,
+.back,
+img {
+  width: 320px;
+  height: 480px;
+} */
+
+/* flip speed */
+
+.flipper {
+  transition: 1.5s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back  during flip */
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front placed above back */
+
+/* .front {
+  z-index: 2;
+} */
+
+/* back, initially hidden */
+
+/* le dos partie avec le texte*/
+.back {
+  transform: rotateY(180deg);
+  background:var(--marron-clair);
+  height: 9.0em;
+  border-radius: 10px;
+  
+}
+
+.titre {
+      /* ont-family: 'arial black';f */
+      font-size: 50px;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      margin-left: 50%;
+      transform: translateX(-200%);
+      opacity: 0;
+      animation: slide-in-anim 1.5s ease-out forwards;
+  }
+
+  @keyframes slide-in-anim {
+      20% {
+          opacity: 0;
+      }
+      60% {
+          transform: translateX(-45%);
+      }
+      75% {
+          transform: translateX(-52%);
+      }
+      100% {
+          opacity: 1;
+          transform: translateX(-50%);
+      }
+  }
+  
+
+
+  /* PAGES BLOG */
+
+/* Section Article*/
+.about {
+  margin-top: 70px;
+  
+
+}
+
+.about-content {
+  display: flex;
+  /* padding: 20px; */
+  align-items: center;
+  /* justify-content: space-between; */
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+/* contenu de l'article pair  */
+.about-content:nth-child(even){  
+  flex-direction: row-reverse;
+
+}
+
+.about-content:nth-child(even) .about-text {
+  transform: translateX(70px);
+  
+}
+
+.about-img {
+  width: 50%; 
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  border-left: 10px solid var(--blanc);
+  border-right: 10px solid var(--blanc) ;
+  border-top: 10px solid var(--blanc) ;
+  border-bottom: 10px solid var(--blanc);
+}
+
+.about-text
+ {
+  
+  width: 30%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  left: -40px;
+  z-index: 2;
+  /* border-left: 10px solid var(--marron-clair); */
+  /* border-right: 10px solid var(--marron-clair) ; */
+  /* border-top: 10px solid var(--marron-clair) ; */
+  /* border-bottom: 10px solid  */
+}
+
+
+.about-text p {
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #B8860B;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #8B5A2B;
+}
+
+
+
+
+  
+/* PAGE INSCRIPTION AVEC FORMULAIRE */
+
+
+
+.formulaire {
+  /* height: 380px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+
+
+}
+
+
+.formu {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  margin-bottom: 200px;
+
+
+
+}
+
+.inscript {
+  margin: auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin-top: 220px;
+    color: var(--blanc);
+    font-weight: 800;
+    
+  }
+
+
+  .form-label {
+    color: var(--blanc);
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+.btn-form {
+  border-style: none;
+  margin-top: 15px;
+  background-color: var(--marron-clair);
+  padding: 6px;
+  border-radius: 5px;
+  color: var(--blanc);
+
+}
+
+
+/* PAGE AJOUT D'ARTICLES */
+
+
+.formu-article {
+  margin-top: 30px;
+}
+
