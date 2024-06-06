@@ -1,26 +1,20 @@
 <?php
-require_once "inc/init.inc.php";
-connexionBdd();
 
-
-
-
-
+require_once "inc/functions.inc.php";
 
 $title = "Histoire du Gwoka";
+
+
 require_once "inc/header.inc.php";
 ?>
 
 
-
-
-
-  <!-- SECTION EN TETE AVEC TITRE ET PREMIER PARAGRAPHE  -->
+  <!-- SECTION EN TETE TITRE "HISTOIRE DU GWOKA" ET PREMIER PARAGRAPHE  -->
 <main>
   <section class="en-tête m-5 p-5">
-    <h1 class="titre mt-5 pt-5">l'Histoire du gwoka</h1>
+    <h1 class="title mt-5 pt-5">l'Histoire du gwoka</h1>
     
-    <div class="brown p-3">
+    <div class="para-light p-3">
       <p>
         Le Gwoka, danse traditionnelle de la Guadeloupe, trouve ses origines dans la période de l'esclavage, où les esclaves ont perpétué la musique africaine à travers cette pratique artistique. Cette expression culturelle, qui englobe la musique, le chant et la danse, est indissociable de l'identité guadeloupéenne. Les tambours Ka, instruments emblématiques du Gwoka, sont au cœur de cette pratique et permettent aux participants d'exprimer leurs émotions et de communiquer de manière authentique.
       </p>
@@ -40,7 +34,6 @@ require_once "inc/header.inc.php";
   </div>
 </div>
 
-
 <div class="col-sm-12 col-md-4">
   <div class="polaroid rotate2">
     <img src="assets/img/boula-et-make.jpg" alt="deux tambours">
@@ -56,7 +49,7 @@ require_once "inc/header.inc.php";
 </div>
 </section>
 
-<!-- SECTION DEUXIEME PARAGRAPHE -->
+<!-- SECTION DEUXIEME PARAGRAPHE DEFINITION GWOKA -->
 
 <section class="para2">
     <div class="brown p-5">
@@ -74,13 +67,13 @@ require_once "inc/header.inc.php";
 <div class="col-sm-12 col-md-3">
   <div class="polaroid rotate1">
     <img src="assets/img/joueurs_gwoka_pap.jpg" alt="joueurs de gwoka en Guadeloupe">
-    <p class="text-pola">joueurs de gwoka en Guadeloupe</p>
+    <p class="text-pola">Joueurs de gwoka en Guadeloupe</p>
   </div>
 </div>
 
 <div class="col-sm-12 col-md-3">
   <div class="polaroid rotate2">
-    <img src="assets/img/groupe_sakitaw.jpg" alt="danseuses de gwoka">
+    <img src="assets/img/groupe_sakitaw.jpg" alt="groupe danseuses de gwoka">
     <p class="text-pola">Groupe Sakitaw<br> Danseuses de gwoka</p>
   </div>
 </div>
@@ -88,14 +81,14 @@ require_once "inc/header.inc.php";
 <div class="col-sm-12 col-md-3">
   <div class="polaroid rotate1">
     <img src="assets/img/deux_tambours.jpg" alt=" photos deux tambours de gwoka">
-    <p class="text-pola">Anciennes photos d'un boula et d'un maké</p>
+    <p class="text-pola">Ancienne photo d'un<br> boula et d'un maké</p>
   </div>
 </div>
 
 <div class="col-sm-12 col-md-3">
   <div class="polaroid rotate2 ">
     <img src="assets/img/danseuse_gwoka.jpg" alt="danseuse et joueurs de gwoka">
-    <p class="text-pola">Danseuse et <br>joueurs de gwoka</p>
+    <p class="text-pola">Danseuse et <br>Joueurs de gwoka</p>
   </div>
 </div>
 

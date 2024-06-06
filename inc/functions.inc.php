@@ -1,7 +1,55 @@
 <!-- Fichier qui contient les fonctions php à utiliser dans notre site -->
 <?php
 
-// fonction debug
+session_start();
+
+define("RACINE_SITE","/ka_dans_ka/"); // constante qui définit les dossiers dans lesquels se situe le site pour pouvoir déterminer des chemin absolus à partir de localhost (on ne prend pas locahost). Ainsi nous écrivons tous les chemins (exp : src, href) en absolus avec cette constante.
+
+
+
+
+// / Constante du serveur => localhost
+
+define("DBHOST", "localhost");
+
+// Constante de l'utilisateur de la BDD du serveur en local  => root
+define("DBUSER", "root");
+
+// Constante pour le mot de passe de serveur en local => pas de mot de passe
+define("DBPASS", "");
+
+// Constante pour le nom de la BDD
+define("DBNAME", "ka_dans_ka");
+
+
+
+//// FONCTION DE DECONNEXION////
+
+
+function connexionBdd()
+{
+
+   
+
+    $dsn = "mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=utf8";
+
+    try {
+
+        $pdo = new PDO($dsn, DBUSER, DBPASS);
+
+        // On définit le mode d'erreur de PDO sur Exception
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+
+        die($e->getMessage());
+    }
+
+    return $pdo;
+}
+
+
+// FONCTION DEBUG
 
 function debug($var)
 {
@@ -14,7 +62,7 @@ function debug($var)
 }
 
 
-// ALERT
+// FUNCTION  ALERT
 
 function alert(string $contenu, string $class)
 {
@@ -27,6 +75,24 @@ function alert(string $contenu, string $class)
         </div>";
 }
 
+//// FONCTION DE DECONNEXION //
+
+
+function logOut()
+{
+
+    if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'deconnexion') {
+
+
+        unset($_SESSION['user']);
+        // On supprime l'indice "user " de la session pour se déconnecter // cette fonction détruit les variables  stocké  comme 'firstName' et 'email'.
+
+        //session_destroy(); // Détruit toutes les données de la session déjà  établie . cette fonction détruit la session sur le serveur 
+
+        header("location:" . RACINE_SITE . "histoire_du_gwo_ka.php");
+    }
+}
+// logOut();
 
 
 
@@ -76,7 +142,6 @@ function inscriptionUsers(string $first_name, string $last_name, string $pseudo,
             ':email' => $email,
             ':mdp' => $mdp,
             ':phone' => $phone
-          
 
         )
     );
@@ -117,25 +182,22 @@ function checkPseudoUser(string $pseudo)
 
 /////////// Fonction pour vérifier un utilisateur ////////////////////
 
-function checkUser(string $email, string $pseudo): mixed
+
+function checkUser( string $pseudo, string $email): mixed
 {
 
     $pdo = connexionBdd();
-
     $sql = "SELECT * FROM users WHERE pseudo = :pseudo AND email = :email";
     $request = $pdo->prepare($sql);
     $request->execute(array(
         ':pseudo' => $pseudo,
         ':email' => $email
-
-
     ));
     $resultat = $request->fetch();
     return $resultat;
 }
 
 //  /////////////////Fonction pour récupérer tous les utilisateurs///////////////////
-
 
 function allUsers(): array
 {
@@ -167,15 +229,6 @@ function showUser(int $id): array
 }
 
 
-
-
-
-
-
-
-
-
-
 // /////////////////  Fonction pour supprimer un utilisateur  ///////////////////////
 
 
@@ -192,27 +245,107 @@ function deleteUser(int $id): void
 }
 
 
+function updateRole( string $role, int $id): void
+{
+    $pdo = connexionBdd();
+    $sql = "UPDATE users SET role = :role WHERE id = :id";
+    $request = $pdo->prepare($sql);
+    $request->execute(array(
+        ':role' => $role,
+        ':id' => $id
 
-function addPosts(string $image, string $title, string $content): void
+    ));
+}
+
+
+//////FONCTIONS AJOUT POST (ARTICLES)////
+
+function addPosts(string $image, string $title, string $content, string $author, string $created_at): void
 {
 
     $pdo = connexionBdd();
 
-    $sql = "INSERT INTO posts (image, title, content)
-     VALUES (:image, :title, :content)";
+    $sql = "INSERT INTO posts (image, title, content, author, created_at)
+     VALUES (:image, :title, :content, :author, :created_at)";
     $request = $pdo->prepare($sql);
     $request->execute(array(
 
 
         ':image' => $image,
         ':title' => $title,
-        ':content' => $content
-
-     
+        ':content' => $content,
+        ':author' => $author,  
+        'created_at' => $created_at
         
     ));
 
 }
+
+
+// FONCTIONS POUR AFFICHER TOUTES LES ARTICLES 
+
+function allPosts() {
+
+    $pdo = connexionBdd();
+    
+    $sql = "SELECT * FROM posts";
+    $request = $pdo->query($sql);
+    $result = $request->fetchAll();
+    return $result;
+}
+
+// FONCTION POUR MODIFIER UN ARTICLE 
+
+function updatePost(int $id, string $image, string $title, string $content, string $author,  string $created_at) : void 
+{
+    $pdo = connexionBdd();
+    $sql = "UPDATE posts 
+                    SET image = :image, 
+                        title = :title, 
+                        content = :content, 
+                        author = :author, 
+                        created_at = :created_at 
+                    WHERE id = :id"; // you need to add a WHERE clause to specify which post to update
+    $request = $pdo->prepare($sql);
+    $request->execute(array (
+        ':id' => $id,
+        ':image' => $image,
+        ':title' => $title,
+        ':content' => $content,
+        ':author' => $author,
+        ':created_at' => $created_at
+    ));
+}
+
+
+// FONCTION POUR SUPPRIMER UN ARTICLE 
+
+function deletePost(int $id): void
+{
+    $pdo = connexionBdd();
+
+    $sql = "DELETE FROM posts WHERE id = :id";
+    $request = $pdo->prepare($sql);
+    $request->execute([':id' => $id]);
+}
+
+
+
+//FONCTION POUR VOIR UN ARTICLE
+
+function showPost(int $id): array
+{
+    $pdo = connexionBdd();
+    $sql = "SELECT * FROM posts WHERE id = :id";
+    $request = $pdo->prepare($sql);
+    $request->execute([
+        ':id' => $id
+    ]);
+    $result = $request->fetch();
+    return $result;
+}
+
+
 
 
 

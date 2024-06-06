@@ -3,33 +3,35 @@
 require_once "../inc/functions.inc.php";
 
 
-if(isset($_GET['action']) && isset($_GET['id_user'])){
-    if(!empty($_GET['action']) && $_GET ['action']=='delete' && !empty($_GET['id_user'])){
-        $idUser = htmlentities($_GET['id_user']);
+
+
+
+
+if (isset($_GET['action']) && isset($_GET['id'])) {
+    if (!empty($_GET['action']) && $_GET['action'] == 'delete' && !empty($_GET['id'])) {
+        $idUser = htmlentities($_GET['id']);
 
         deleteUser($idUser);
     }
 }
 
-if(!empty($_GET['action']) && $_GET['action'] == 'update' && !empty($_GET['id'])){
+if (!empty($_GET['action']) && $_GET['action'] == 'update' && !empty($_GET['id'])) {
     $user = showUser($_GET['id']);
-    if($user['role']=='ROLE_ADMIN'){
-        updateRole('ROLE_USER',$user['id']);
-
+    if ($user['role'] == 'ROLE_ADMIN') {
+        updateRole('ROLE_USER', $user['id']);
     }
 
-    if($user['role']=='ROLE_USER'){
-        updateRole('ROLE_ADMIN',$user['id']);
-
+    if ($user['role'] == 'ROLE_USER') {
+        updateRole('ROLE_ADMIN', $user['id']);
     }
 }
 
 
-if( !isset($_SESSION['user'])){
-    header("location:".RACINE_SITE."authentification.php");
-}else{
-    if($_SESSION['user']['role'] == 'ROLE_USER'){
-        header("location:".RACINE_SITE."histoire_du_gwo_ka.php");
+if (!isset($_SESSION['user'])) {
+    header("location:" . RACINE_SITE . "connexion.php");
+} else {
+    if ($_SESSION['user']['role'] == 'ROLE_USER') {
+        header("location:" . RACINE_SITE . "histoire_du_gwo_ka.php");
     }
 }
 
@@ -40,89 +42,71 @@ if( !isset($_SESSION['user'])){
 
 
 $title = "Backoffice";
+
 require_once "../inc/header.inc.php";
+
+
+
 ?>
 
 <main>
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-2">
+    <div class="container mt-5 pt-5 ">
+        <div class="row justify-content-center mt-5 mb-5 pt-5 pb-5">
+            <div class="col-12 text-center">
+                <?php
+                if (isset($_GET['dashboard_php'])) :
+                ?>
+                    <h2 class="">Bonjour <?= $_SESSION['user'] ?></h2>
 
-            <div class="d-flex flex-column text-bg-dark p-3 sidebarre">
-                <hr>
+                <?php
+                endif;
+                ?>
 
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li>
-                        <a href="?dashboard_php" class="nav-link text-light">Backoffice</a>
-                    </li>
-                    <li>
-                        <a href="?films_php" class="nav-link text-light">Films</a>
-                    </li>
-                    <li>
-                        <a href="?categories_php" class="nav-link text-light">Catégories</a>
-                    </li>
-                    <li>
-                        <a href="?users_php" class="nav-link text-light">Utilisateurs</a>
-                    </li>
-
-                </ul>
-                <hr>
+                <p class="title">Bienvenue sur le backoffice</p>
+           
             </div>
         </div>
+        <div class="row d-flex">
+            <div class="col-12 justify-center ">
+                <div class=" text-bg p-3 mt-5 mb-5">
+                    <hr>
 
-        <?php
-            if ( isset( $_GET['dashboard_php'] ) ) :
-        ?>
+                    <ul class="nav  ">
+                        <li>
+                            <a href="<?= RACINE_SITE ?>admin/dashboard.php" class="nav-link text-light">Backoffice</a>
+                        </li>
+                        <li>
+                            <a href="<?= RACINE_SITE ?>admin/posts.php" class="nav-link text-light">Articles</a>
+                        </li>
+                        <li>
+                            <a href="<?= RACINE_SITE ?>admin/cd.php" class="nav-link text-light">CD</a>
+                        </li>
+                        <li>
+                            <a href="<?= RACINE_SITE ?>admin/users.php" class="nav-link text-light">Utilisateurs</a>
+                        </li>
 
-        <div class="w-50 m-auto">
-            <h2>Bonjour <?php echo $_SESSION['user']['first_name']?></h2>
-
-            <p>Bienvenue sur le backoffice</p>
-            <img src="<?=RACINE_SITE?>assets/img/affiche.jpg" alt="Affiche les articles sur le BackOffice" width="500" height="800">
+                    </ul>
+                    <hr>
+                </div>
+            </div>
         </div>
-
-        <?php
-        
-            endif;
-
-        ?>
-
-
-            <div class="col-sm-12">
-            <?php
-
-            /** $_GET représente les données qui transitent par l'URL. Il s'agit d'une Super Globale et comme toutes les superglobales elle sont de type array
-             * 'superglobale' signifie que cette variable est disponible partout dans le script, y compris au sein des fonctions (pas besoin de faire global $_GET)
-             * Les informations transitent dans l'URL selon la syntaxe suivante: 
-             * 
-             * ex: page.php?indice1=valeur1&indice2=valeur2&indiceN=valeurN
-             * Quand on receptionne les données, $_GET est rempli selon le schéma suivant: 
-             * 
-             *                  $_GET = array(
-             *                    'indice1' => 'valeur1',
-             *                    'indice2' => 'valeur2',
-             *                    'indiceN' => 'valeurN'
-             *                   );
-            */
-
-            if ( !empty( $_GET ) ) {   //si ma variable $_GET n'est pas vide, cela veut dire que j'ai cliqué sur un lien de la sidebar ( l'indice de la variable $_GET change selon le lien indiqué dans la balise a)
-
-                if ( isset( $_GET['films_php'] ) ){
-                    require_once "films.php";
-
-                }else if (isset($_GET['categories_php'])){
-                    require_once "categories.php";
-
-                }else if (isset($_GET['users_php'])){
-                    require_once "users.php";
-                }else{
-                    require_once "dashboard.php";
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <?php
+                if (!empty($_GET)) {
+                    if (isset($_GET['posts.php'])) {
+                        require_once "posts.php";
+                    } else if (isset($_GET['users.php'])) {
+                        require_once "users.php";
+                    } else {
+                        require_once "dashboard.php";
+                    }
                 }
-            }
-            ?>
+                ?>
             </div>
+        </div>
     </div>
 </main>
-
 
 <?php
 require_once "../inc/footer.inc.php";

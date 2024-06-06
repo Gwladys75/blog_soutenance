@@ -1,16 +1,14 @@
 <?php
-
 // 1 - Connexion à la BDD via la page init.inc.php
-require_once 'inc/functions.inc.php';
-require_once 'inc/init.inc.php';
 
+require_once 'inc/functions.inc.php';
 
 
 
 
 if (!empty($_SESSION['user'])) {
 
-  // header("location:" . RACINE_SITE . "");
+  header("location:" . RACINE_SITE . "profil.php");
 }
 
 echo "<br><br><br><br><br>";
@@ -22,7 +20,6 @@ $info = '';
 if (!empty($_POST)) // l'envoi du Formulaire (button "S'inscrire" ) 
 {
   // debug($_POST);
-
   $verif = true;
 
   foreach ($_POST as $value) {
@@ -35,15 +32,15 @@ if (!empty($_POST)) // l'envoi du Formulaire (button "S'inscrire" )
   }
 
   if (!$verif) {
-    debug($_POST);
+    // debug($_POST);
 
 
     $info = alert("Veuillez renseigner tout les champs", "danger");
+    echo $info;
   } else {
 
-    debug($_POST);
 
-    // On stock les values de nos champs dans des variables et en les passant dans la fonction trim()
+
 
 
 
@@ -73,7 +70,7 @@ if (!empty($_POST)) // l'envoi du Formulaire (button "S'inscrire" )
       $info .= alert("Le pseudo n'est pas valide.", "danger");
     }
 
-    if (strlen($mdp) < 5 || strlen($mdp) > 15) {
+    if (strlen($mdp) < 5 || strlen($mdp) > 12) {
 
       $info .= alert("Le mot de passe n'est pas valide.", "danger");
     }
@@ -88,95 +85,94 @@ if (!empty($_POST)) // l'envoi du Formulaire (button "S'inscrire" )
       $info .= alert("L'email n'est pas valide.", "danger");
     }
 
-    if (!preg_match('#^[0-9]+$#', $phone) || strlen($phone) > 10 || !trim($phone)) {
+    // if (!preg_match('#^[0-9]+$#', $phone) || strlen($phone) > 10 || !trim($phone)) {
 
-      $info .= alert("Le Téléphone n'est pas valide.", "danger");
-    }
+    //   $info .= alert("Le Téléphone n'est pas valide.", "danger");
 
+    // }
+    // debug($_POST);
 
+  }
 
-    if (empty($info)) {
-
-      $emailExist = checkEmailUser($email);
-      $pseudoExist = checkPseudoUser($pseudo);
-
-
-      if ($emailExist || $pseudoExist) {
-
-        $info = alert("Vous avez déjà un compte", "danger");
-        // ***************** REDIRECTION "authentification.php"
+  if (empty($info)) {
+    debug($_POST);
+    $emailExist = checkEmailUser($email);
+    $pseudoExist = checkPseudoUser($pseudo);
 
 
+    if ($emailExist || $pseudoExist) {
 
-      } else if ($mdp !== $confirmMdp) {
+      $info = alert("Vous avez déjà un compte", "danger");
+    } else if ($mdp !== $confirmMdp) {
 
-        $info .= alert("Le mot de passe et la confirmation doivent être identiques.", "danger");
-      } else {
+      $info .= alert("Le mot de passe et la confirmation doivent être identiques.", "danger");
+    } else {
 
-        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+      $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
-        inscriptionUsers($first_name, $last_name, $pseudo, $email, $mdp, $phone);
+      inscriptionUsers($first_name, $last_name, $pseudo, $email, $mdp, $phone);
 
-        $info = alert('Vous êtes bien inscrit, vous pouvez vous connectez !', 'success');
-      }
+      $info = alert('Vous êtes bien inscrit, vous pouvez vous connectez !', 'success');
+      header('Location:' . RACINE_SITE . 'connexion.php');
     }
   }
-} else {
-  debug($_POST);
-  echo 'Non SUBMIT';
+
+  // debug($_POST);
+
+
+
 }
 
-
+$title = "Inscription";
 
 require_once 'inc/header.inc.php';
+echo $info;
+
+
 ?>
 
-
-
 <main>
-
-
+  <!-- SECTION INSCRIPTION AVEC TITRE PARAGRAPHE ET FORMULAIRE  -->
   <section class="inscript">
     <div>
-      <h4>Rejoignez notre communauté de passionnés de Gwoka !</h4>
-      <p> Inscrivez-vous dès maintenant pour profiter de toutes les fonctionnalités de notre blog et découvrir les dernières actualités sur cet art traditionnel guadeloupéen.</p>
+      <h1 class="title w-100">Rejoignez notre communauté de Gwoka !</h1>
+      <p> Inscrivez-vous dès maintenant pour découvrir les dernières actualités sur cet art traditionnel guadeloupéen.</p>
     </div>
   </section>
 
+  <!-- FORMULAIRE INSCRIPTION -->
+
   <section class="formu">
-
-    <form action="connexion.php" method="post" id="inscription" class="mt-5 w-50">
-
+    <form action="" method="post" id="inscription" class="mt-5 w-50">
+     
       <div class="mb-3 text-center">
         <label for="prenom" class="form-label">Votre prénom</label>
-        <input type="text" class="form-control" id="prenom" placeholder="Votre prenom" name="first_name" required>
+        <input type="text" class="form-control" id="prenom" placeholder="Votre prenom" name="first_name">
       </div>
 
       <div class="mb-3 text-center">
         <label for="nom" class="form-label">Votre nom</label>
-        <input type="text" class="form-control" id="nom" placeholder="Votre nom" name="last_name" required>
+        <input type="text" class="form-control" id="nom" placeholder="Votre nom" name="last_name">
       </div>
-
 
       <div class="mb-3 text-center">
         <label for="email" class="form-label">Votre email</label>
-        <input type="email" class="form-control" id="email" placeholder="Votre email" name="email" required>
+        <input type="email" class="form-control" id="email" placeholder="Votre email" name="email">
       </div>
-
 
       <div class="mb-3 text-center">
         <label for="username" class="form-label">Votre pseudo</label>
-        <input type="text" class="form-control" id="username" placeholder="Votre pseudo" name="pseudo" required>
+        <input type="text" class="form-control" id="username" placeholder="Votre pseudo" name="pseudo">
       </div>
 
       <div class="mb-3 text-center">
         <label for="phone" class="form-label">Votre numéro de téléphone</label>
-        <input type="tel" class="form-control" id="phone" placeholder="Votre numéro de téléphone" name="phone" required>
+        <input type="tel" class="form-control" id="phone" placeholder="Votre numéro de téléphone" name="phone">
       </div>
 
       <div class="mb-3 text-center">
         <label for="password" class="form-label">Votre mot de passe</label>
-        <input type="password" class="form-control" id="password" placeholder="Votre mot de passe" name="mdp" required>
+        <input type="password" class="form-control" id="mdp" placeholder="Votre mot de passe" name="mdp">
       </div>
 
       <div class=" mb-3 text-center">
@@ -185,12 +181,12 @@ require_once 'inc/header.inc.php';
       </div>
 
       <div class="showPass">
-        <label for="showpassConfirm" class="text-danger"><input type="checkbox" onclick="showPass()" id="showpassConfirm">Afficher/masquer le mot de passe</label>
+        <label for="showpassConfirm" class="text-white"><input type="checkbox" onclick="showPass()" id="showpassConfirm">Afficher/masquer le mot de passe</label>
       </div>
 
 
       <div class="text-center">
-        <input class="btn-form" type="submit" value="S'inscrire" />
+        <input class="btn" type="submit" value="S'inscrire" />
       </div>
     </form>
 
@@ -199,35 +195,8 @@ require_once 'inc/header.inc.php';
   </section>
 </main>
 
-<footer class="container-fluid ">
-  <div class="row justify-content-around">
-    <div class="col-sm-12 col-md-3">
-      <a href="histoire_du_gwo_ka.php"><img src="assets/img/logo (1).png"></a>
-    </div>
+<?php
 
-    <div class="col-sm-12 col-md-3">
-      <ul>
-        <li><a href="histoire_du_gwo_ka.php">histoire du Gwoka</a></li>
-        <li><a href="les_7_rythmes.php">les 7 Rythmes</a></li>
-        <li><a href="blog.php">Blog</a></li>
-        <li><a href="cd.php">CD</a></li>
-        <li><a href="contact.php">Contact</a></li>
-      </ul>
-    </div>
+require_once 'inc/footer.inc.php';
 
-    <div class="col-sm-12 col-md-3 ">
-      <i class="bi bi-facebook"></i>
-      <i class="bi bi-instagram"></i>
-      <i class="bi bi-github"></i>
-    </div>
-
-  </div>
-</footer>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script> -->
+?>

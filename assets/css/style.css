@@ -11,22 +11,32 @@ body {
   font-family: 'handlee', cursive;
   font-size: 1.2rem;
   font-weight: 400;
-  background: url("../img/Allee3.jpg") fixed no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.191), rgba(0, 0, 0, 0.200)), url("../img/Allee3.jpg") center/cover fixed;
   /* background-repeat: no-repeat; */
   opacity: 30px;
 
 
 }
 
+@media screen and (max-width:767px) {
+
+  body {
+    background: linear-gradient(rgba(0, 0, 0, 0.191), rgba(0, 0, 0, 0.200)), url("../img/5rythme.png") center/cover fixed;
+  }
+}
+
+
+
 
 img {
   max-width: 100%;
+  border-radius: 10px;
 }
 
  /* ROOT QUI CIBLE LA RACINE DE MA PAGE HTML  */
 
 :root {
- --marron-nav: #c8953ecc;
+ /* --marron-nav: #c8953ecc; */
  --marron-jaune: #C8953E;
  --jaune: #FFC304;
  --marron-clair: #AD7406;
@@ -45,7 +55,7 @@ img {
   /* position: fixed; */
   
   width: 100%; 
-  height: 30vh;
+  height: 22vh;
   background-color: var(--marron-clair);
   padding: 40px;
 
@@ -57,12 +67,16 @@ nav a {
 
 .nav-link:hover{
   color: var(--jaune)!important;
+  text-decoration: underline;
+  text-underline-offset: 12px;
+  padding: 5px;
 }
 
 
 
 .logo {
-  width: 13% !important;
+  width: 10% !important;
+  
 
  /* padding-top: 5px;
  margin-top: 20px; */
@@ -70,12 +84,12 @@ nav a {
 
 .nav-item {
   padding: 20px;
-  color: #fff;
+  color: var(--blanc);
   padding: 20px;
 }
 
 .nav-link {
-  color: #fff;
+  color: var(--blanc);
   font-weight: 800;
 }
 
@@ -92,7 +106,11 @@ a.nav-link-toggler
 
 
 
-
+.navbar-collapse {
+  background-color: var(--marron-clair);
+  margin-top: 5px;
+ 
+}
   
 
 
@@ -113,27 +131,64 @@ a.nav-link-toggler
   padding: 25px;
 }
 
+
+/* BARRE DE RECHERCHE */
+
+
+/* 
+.search-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #555;
+}
+
+.search-bar {
+  display: none;
+  max-width: 300px;
+}
+
+.search-bar {
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.form-control.show {
+  display: block;
+}
+
+Styles supplémentaires pour améliorer l'apparence
+.search-icon:hover {
+  color: #333;
+}
+
+.search-bar .form-control:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+} */
 /* HOVER DES ICONES  */
 
 .bi-disc-fill:hover,
 .bi-person-square:hover,
 .bi-bag-fill:hover,
+.bi-person-square:hover,
+.bi-box-arrow-right:hover,
 .bi-search:hover {
   color: var(--jaune);
 }
 
+/* .bi-person-square:hover,
 .bi-person-square:hover,
 .bi-bag-fill:hover {
   color: var(--jaune);
 
-}
+} */
 
 
 
 /* TEXTES PARAGRAPHES  TITRES  */
 h1,
-h2,
-p {
+h2
+ {
   font-weight: 800;
   text-align: center;
   text-shadow: 1px 1px 2px black;
@@ -144,18 +199,31 @@ p {
 }
 
 
-p {
+p  {
+  text-align: center;
   border-radius: 10px;
   padding: 10px;
-  background: rgba(241, 240, 240, 0.189) !important;
+  background: rgba(246, 244, 244, 0.213) !important;
+  backdrop-filter: blur(2px);
+  font-family: "Rosario", sans-serif;
+  font-weight: bolder;
+  /* text-shadow: 1px 1px 2px black; */
+  padding: 5px;
+  color:var(--blanc);
+
 
 }
 
 
+.para-light {
+  width: 80%;
+  margin: auto;
+}
+/* 
 .titre {
     margin-bottom: 30px !important;
     
-}
+} */
 
 
 /* INC FOOTER */
@@ -195,52 +263,104 @@ a:hover{
 
 
 
+/* LES GRANDS TITRES DES PAGES, SLIDE -> CODE PEN   */
 
+.title {
+  /* ont-family: 'arial black';f */
+  font-size: 50px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-left: 50%;
+  transform: translateX(-200%);
+  opacity: 0;
+  animation: slide-in-anim 1.5s ease-out forwards;
+  color: var(--blanc);
+}
 
+@keyframes slide-in-anim {
+  20% {
+      opacity: 0;
+  }
+  60% {
+      transform: translateX(-45%);
+  }
+  75% {
+      transform: translateX(-52%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(-50%);
+  }
+}
 
 
 
 footer {
-  display: flex;
-  height: 30vh;
-  width: 100%;
- background-color: var(--marron-clair) !important;
- align-items: center;
- margin-top: 50px;
-
+ 
+/* height: 45vh; */
+width: 100%;
+background-color: var(--marron-clair) !important;
+padding: 36px;
 
 }
 
-.liens-menus {
+footer .footer-container{
   display: flex;
-  padding: 10px;
-  justify-content: space-between;
-  margin-left: 60px;
   
-
-
 }
+
+
 
 .logo-footer {
-  width:  10%;
+  width:  8%;
+  height: 8%;
 
 }
 
-.social {
-  align-items: flex-end
-;
+
+footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 12px;
+  padding: 5px;
+  
 }
+
+
+footer .footer-left {
+  padding-right: 100px;
+  border-right: 3px solid var(--blanc);
+ 
+}
+
+
+footer .footer-right {
+  padding-left: 100px;
+}
+
+footer .icones-reseaux{
+  margin-top: 16px;
+}
+
+.social{
+  text-shadow: 1px 1px 2px black;
+  color:var(--blanc);
+}
+
 /* PAGE HISTOIRE DU GWOKA  */
 
-.brown {
-  width: 70%;
-  margin: auto
+.para-center {
+  width: 80%;
+  margin: auto;
+  background-color: var(--blanc);
+  border-radius: 10px;
 }
-/* 
-SECTION IMAGES POLAROIDES ET TEXTES */
 
+.para-brown {
+  color: var(--marron-fonce);
 
-
+}
+/* SECTION IMAGES POLAROIDS ET TEXTES */
 
 .polaroid {
   background-color: var(--blanc);
@@ -256,9 +376,6 @@ SECTION IMAGES POLAROIDES ET TEXTES */
 transform: scale(1.5);
 transition: 0.5s;
 }
-
-
-
 
 .text-pola {
   color: var(--marron-fonce);
@@ -286,12 +403,7 @@ transform : rotate(15deg);
 
 
 
-
-
-
-/* 
-PAGE LES 7 RYTHMES */
-
+/* PAGE LES 7 RYTHMES AVEC LE GRID POUR LES  IMAEGS ET LE TEXTE  */
 
 .container-gallery {
   width: 70%;
@@ -301,7 +413,7 @@ PAGE LES 7 RYTHMES */
   display: grid;
   grid-template-columns: (7 / 1fr);
   grid-template-rows: (7 / 1fr);
-  gap: 15px 15px;
+  gap: 30px 30px;
   grid-auto-flow: row;
   grid-template-areas:
       "PHOTO1 PHOTO1 PHOTO1 PHOTO1 PHOTO2 PHOTO2 PHOTO2"
@@ -324,8 +436,6 @@ PAGE LES 7 RYTHMES */
     background-repeat: no-repeat;
     _background-attachment : fixed; */
   
-
-
 }
 
 .PHOTO2 {
@@ -376,11 +486,7 @@ PAGE LES 7 RYTHMES */
   background: url("../img/5rythme.png") center/cover;
   background-repeat: no-repeat;
 
-
 }
-
-
-
 
 .flip-container {
   perspective: 1000;
@@ -421,15 +527,9 @@ img {
   left: 0;
 }
 
-/* front placed above back */
 
-/* .front {
-  z-index: 2;
-} */
 
-/* back, initially hidden */
-
-/* le dos partie avec le texte*/
+/* BACK = le dos des images, le texte*/
 .back {
   transform: rotateY(180deg);
   background:var(--marron-clair);
@@ -438,43 +538,15 @@ img {
   
 }
 
-.titre {
-      /* ont-family: 'arial black';f */
-      font-size: 50px;
-      text-align: center;
-      padding: 0;
-      margin: 0;
-      margin-left: 50%;
-      transform: translateX(-200%);
-      opacity: 0;
-      animation: slide-in-anim 1.5s ease-out forwards;
-  }
 
-  @keyframes slide-in-anim {
-      20% {
-          opacity: 0;
-      }
-      60% {
-          transform: translateX(-45%);
-      }
-      75% {
-          transform: translateX(-52%);
-      }
-      100% {
-          opacity: 1;
-          transform: translateX(-50%);
-      }
-  }
-  
+
 
 
   /* PAGES BLOG */
-
-/* Section Article*/
+/* SECTION ARTICLE*/
 .about {
   margin-top: 70px;
   
-
 }
 
 .about-content {
@@ -544,15 +616,51 @@ img {
 
 .btn:hover {
   background-color: #8B5A2B;
+  color: var(--jaune);
+  font-weight: 600;
 }
 
 
 
+/* PAGE ARTICLES LES ARTISANTS DU KA  */
+.article-title {
+  text-align: center;
+  border-bottom: 2px solid var(--blanc);
+
+}
+
+
+.article-image {
+  display: block;
+  margin: 0 auto;
+  border-radius: 18px;
+  /* max-width: 50%; */
+}
+.article-content {
+ margin: 0 auto;
+  padding: 20px;
+  width: 75%;
+  backdrop-filter: blur(2px);
+  
+}
+.article-author {
+  text-align: right;
+  border-bottom: 2px solid var(--blanc);
+  text-shadow: 1px 1px 2px black;
+  margin-bottom: 40px;
+}
+
+
+
+/* PARTIE COMMENTAIRE */
+.container-comment {
+  border-top: 2px solid var(--blanc);
+
+}
+
 
   
 /* PAGE INSCRIPTION AVEC FORMULAIRE */
-
-
 
 .formulaire {
   /* height: 380px; */
@@ -560,9 +668,6 @@ img {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
-
-
 }
 
 
@@ -571,8 +676,6 @@ img {
   justify-content: center;
   margin-top: 35px;
   margin-bottom: 200px;
-
-
 
 }
 
@@ -610,9 +713,72 @@ img {
 /* PAGE AJOUT D'ARTICLES */
 
 
+/* /BACKOFFICE */
+.text-bg {
+  background-color: var(--marron-clair);
+  
+}
 
 
 
+/*PAGE CD*/
+
+.cd {
+  margin: 100px;
+  text-align: center;
+  margin-left: 15px;
+  padding-top: 20px;
+}
+
+
+section .aside {
+  display: flex;
+flex-direction: column;
+
+    
+}
+
+.aside-filter {
+  align-self: flex-end;
+  padding: 30px;
+  background-color: var(--blanc);
+  border: 1px solid #ddd;
+  margin-bottom: 180px;
+  border-radius: 20px;
+  height: 50vh;
+}
+
+.filter-options {
+
+  margin-bottom: 20px;
+}
+
+.filter-options label {
+  margin-right: 10px;
+}
+
+
+/* PAGE PROFIL  */
 
 
 
+/* PAGE CD */
+
+aside {
+  padding: 20px;
+ 
+  border-radius: 10px;
+}
+
+aside h2 {
+  margin-top: 0;
+}
+
+aside p {
+  margin-bottom: 10px;
+}
+
+
+.btn {
+  margin-right: 10px;
+}
