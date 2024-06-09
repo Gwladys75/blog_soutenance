@@ -41,29 +41,15 @@ if (!empty($_POST)) // l'envoi du Formulaire (button "S'inscrire" )
 
 
 
-
-
-
-    $first_name = isset($_POST['first_name']) ? $_POST['first_name'] : null;
-    $last_name = isset($_POST['last_name']) ? $_POST['last_name'] : null;
+  
     $pseudo = isset($_POST['pseudo']) ? $_POST['pseudo'] : null;
     $email = isset($_POST['email']) ? $_POST['email'] : null;
     $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : null;
     $confirmMdp = isset($_POST['confirmMdp']) ? $_POST['confirmMdp'] : null;
-    $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
+    
 
+  
 
-
-
-    if (strlen($first_name) < 2 || preg_match('/[0-9]+/', $first_name)) {
-
-      $info = alert("Le prénom n'est pas valide.", "danger");
-    }
-
-    if (strlen($last_name) < 2 || preg_match('/[0-9]+/', $last_name)) {
-
-      $info .= alert("Le nom n'est pas valide.", "danger");
-    }
 
     if (strlen($pseudo) < 2) {
 
@@ -85,13 +71,6 @@ if (!empty($_POST)) // l'envoi du Formulaire (button "S'inscrire" )
       $info .= alert("L'email n'est pas valide.", "danger");
     }
 
-    // if (!preg_match('#^[0-9]+$#', $phone) || strlen($phone) > 10 || !trim($phone)) {
-
-    //   $info .= alert("Le Téléphone n'est pas valide.", "danger");
-
-    // }
-    // debug($_POST);
-
   }
 
   if (empty($info)) {
@@ -110,7 +89,7 @@ if (!empty($_POST)) // l'envoi du Formulaire (button "S'inscrire" )
 
       $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
-      inscriptionUsers($first_name, $last_name, $pseudo, $email, $mdp, $phone);
+      inscriptionUsers($pseudo, $email, $mdp);
 
       $info = alert('Vous êtes bien inscrit, vous pouvez vous connectez !', 'success');
       header('Location:' . RACINE_SITE . 'connexion.php');
@@ -145,31 +124,19 @@ echo $info;
   <section class="formu">
     <form action="" method="post" id="inscription" class="mt-5 w-50">
      
-      <div class="mb-3 text-center">
-        <label for="prenom" class="form-label">Votre prénom</label>
-        <input type="text" class="form-control" id="prenom" placeholder="Votre prenom" name="first_name">
-      </div>
-
-      <div class="mb-3 text-center">
-        <label for="nom" class="form-label">Votre nom</label>
-        <input type="text" class="form-control" id="nom" placeholder="Votre nom" name="last_name">
-      </div>
-
-      <div class="mb-3 text-center">
-        <label for="email" class="form-label">Votre email</label>
-        <input type="email" class="form-control" id="email" placeholder="Votre email" name="email">
-      </div>
 
       <div class="mb-3 text-center">
         <label for="username" class="form-label">Votre pseudo</label>
         <input type="text" class="form-control" id="username" placeholder="Votre pseudo" name="pseudo">
       </div>
 
+
       <div class="mb-3 text-center">
-        <label for="phone" class="form-label">Votre numéro de téléphone</label>
-        <input type="tel" class="form-control" id="phone" placeholder="Votre numéro de téléphone" name="phone">
+        <label for="email" class="form-label">Votre email</label>
+        <input type="email" class="form-control" id="email" placeholder="Votre email" name="email">
       </div>
 
+    
       <div class="mb-3 text-center">
         <label for="password" class="form-label">Votre mot de passe</label>
         <input type="password" class="form-control" id="mdp" placeholder="Votre mot de passe" name="mdp">

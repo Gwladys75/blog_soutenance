@@ -7,7 +7,7 @@ if( !isset($_SESSION['user'])){
     header("location:".RACINE_SITE."inscription.php");
 }else{
     if($_SESSION['user']['role'] == 'ROLE_USER'){
-        header("location:".RACINE_SITE."histoire_du_gwo_ka.php");
+        header("location:".RACINE_SITE."index.php");
     }
 }
 
@@ -25,11 +25,11 @@ require_once "../inc/header.inc.php";
 
 <main>
 
-    <div class="d-flex flex-column m-auto mt-5">
+<div class="container d-flex flex-column justify-content-center align-items-center mt-5">
 
-        <h2 class="text-center fw-bolder mb-5 text-danger">Les articles</h2>
-        <a href="gestions_posts.php" class="btn btn-primary p-3 fs-3 align-self-end "> Ajouter articles</a>
-        <table class="table table-dark table-bordered mt-5 ">
+<h2 class="text-center fw-bolder mb-5 text-danger">Les articles</h2>
+<a href="gestions_posts.php" class="btn btn-primary p-3 fs-3 mb-3">Ajouter articles</a>
+<table class="table table-dark table-bordered mt-3 text-center">
             <thead>
                 <tr>
                    

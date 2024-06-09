@@ -170,7 +170,6 @@ Styles supplémentaires pour améliorer l'apparence
 .bi-disc-fill:hover,
 .bi-person-square:hover,
 .bi-bag-fill:hover,
-.bi-person-square:hover,
 .bi-box-arrow-right:hover,
 .bi-search:hover {
   color: var(--jaune);
@@ -202,13 +201,13 @@ h2
 p  {
   text-align: center;
   border-radius: 10px;
-  padding: 10px;
+  /* padding: 20px 20px; */
   background: rgba(246, 244, 244, 0.213) !important;
   backdrop-filter: blur(2px);
   font-family: "Rosario", sans-serif;
   font-weight: bolder;
   /* text-shadow: 1px 1px 2px black; */
-  padding: 5px;
+  padding: 30px;
   color:var(--blanc);
 
 
@@ -216,7 +215,7 @@ p  {
 
 
 .para-light {
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 /* 
@@ -266,7 +265,6 @@ a:hover{
 /* LES GRANDS TITRES DES PAGES, SLIDE -> CODE PEN   */
 
 .title {
-  /* ont-family: 'arial black';f */
   font-size: 50px;
   text-align: center;
   padding: 0;
@@ -295,6 +293,8 @@ a:hover{
 }
 
 
+
+/* FOOTER */
 
 footer {
  
@@ -346,6 +346,10 @@ footer .icones-reseaux{
   text-shadow: 1px 1px 2px black;
   color:var(--blanc);
 }
+
+
+
+
 
 /* PAGE HISTOIRE DU GWOKA  */
 
@@ -403,7 +407,7 @@ transform : rotate(15deg);
 
 
 
-/* PAGE LES 7 RYTHMES AVEC LE GRID POUR LES  IMAEGS ET LE TEXTE  */
+/* PAGE LES 7 RYTHMES AVEC LE GRID POUR LES  IMAGES ET LE TEXTE  */
 
 .container-gallery {
   width: 70%;
@@ -760,7 +764,9 @@ flex-direction: column;
 
 /* PAGE PROFIL  */
 
-
+.img-djembe {
+  width: 20%;
+}
 
 /* PAGE CD */
 

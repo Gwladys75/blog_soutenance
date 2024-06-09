@@ -9,18 +9,16 @@ require_once "inc/header.inc.php";
 
 <main>
   <section class="en-tête m-5 p-5">
-    <h1 class="title mt-5 pt-5">l'Histoire du Blog</h1>
+    <h1 class="title mt-5 pt-5">Découvrez les derniers articles</h1>
     <div class="para-light p-3">
       <p class="">
-        Bienvenue sur mon blog dédié au gwoka, la danse et musique traditionnelle emblématique de la Guadeloupe! <br>Le gwoka est un véritable trésor culturel qui perpétue les traditions ancestrales de l'île.<br>
-        Ses rythmes envoûtants, ses chants puissants et ses mouvements gracieux vous transporteront au cœur de l'histoire et de l'âme guadeloupéenne. <br>
-        Que vous soyez un passionné de musique du monde ou simplement curieux de découvrir de nouvelles cultures, vous trouverez ici des informations fascinantes sur l'origine, les instruments, les styles et les principaux artistes du gwoka.<br> Laissez-vous bercer par ces sons uniques et plongez avec moi dans l'univers captivant de cette tradition vivante, fière et authentique de la Guadeloupe!
+        Que vous soyez un passionné de musique du monde ou simplement curieux de découvrir de nouvelles cultures, vous trouverez ici des informations fascinantes sur l'origine, les instruments, les styles et les principaux artistes du gwoka.
       </p>
     </div>
   </section>
 
   <section>
-    <div class="container mt-5 pt-5">
+    <div class="container ">
       <div class="row g-3">
 
         <?php

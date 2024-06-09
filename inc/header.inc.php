@@ -5,7 +5,8 @@ require_once "functions.inc.php";
 
 // déconnexion ($_SESSION)
 logOut();
-
+// unset($sf2_meta);
+// unset($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@ logOut();
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projet soutenance : Blog ka Dans ka - Au rythme du ka">
+    <meta name="description" content="<?= $metadescription ?>">
     <meta name="author" content="Gwladys Jacobin">
 
     <!--lien head librairie AOS-->
@@ -36,6 +37,7 @@ logOut();
     <!--Mon lien css-->
     <link rel="stylesheet" href="<?= RACINE_SITE ?>assets/css/style.css">
 
+
     <title><?= $title ?></title>
 
 
@@ -54,17 +56,17 @@ logOut();
                 </button>
                 <div class="collapse navbar-collapse justify-content-center " id="navbarNavDropdown">
                     <div class="logo">
-                        <a href="<?= RACINE_SITE ?>histoire_du_gwo_ka.php"> <img src="<?= RACINE_SITE ?>assets/img/logo_ka_dans_ka.png" alt="logo"></a>
+                        <a href="<?= RACINE_SITE ?>index.php"> <img src="<?= RACINE_SITE ?>assets/img/logo_ka_dans_ka.png" alt="logo"></a>
                     </div>
 
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a class="nav-link .underline" aria-current="page" href="<?= RACINE_SITE ?>histoire_du_gwo_ka.php">Histoire du Gwoka</a>
+                            <a class="nav-link .underline" aria-current="page" href="<?= RACINE_SITE ?>index.php">Histoire du Gwoka</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= RACINE_SITE ?>les_7_rythmes.php">les 7 rythmes</a>
+                            <a class="nav-link" href="<?= RACINE_SITE ?>les_7_rythmes.php">Les 7 rythmes</a>
                         </li>
                         <!-- MENU DROPDOWN pour le blog et articles -->
                         <li class="nav-item dropdown">
@@ -79,28 +81,42 @@ logOut();
                             <a class="nav-link" href="<?= RACINE_SITE ?>cd.php">CD</a>
                             <i class="bi bi-disc-fill"></i>
                         </li>
+
+
+
+
                         <!-- BackOffice -->
                         <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'ROLE_ADMIN') { ?>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= RACINE_SITE ?>admin/dashboard.php">Backoffice</a>
+                                <a class="nav-link" href="<?= RACINE_SITE ?>dashboard.php">Backoffice</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="?action=deconnexion"><i class="bi bi-box-arrow-right"></i></a>
+                                <a href="index.php?action=deconnexion"><i class="bi bi-box-arrow-right"></i></a>
+
+                            </li>
+                            <li>
+                                <a class="nav-link" href="<?= RACINE_SITE ?>profil.php">Compte <sup class="badge rounded-pill text-bg-danger ms-2 fs-6"><?= $_SESSION['user']['pseudo'] ?></sup></a>
                             </li>
 
-                        <?php } ?>
+
+                            <?php } ?>
                     </ul>
                     <?php if (!isset($_SESSION['user'])) { ?>
                         <!-- Icones -->
                         <a href="<?= RACINE_SITE ?>inscription.php"> <i class="bi bi-person-fill-add"></i></a>
-                        <a href="<?= RACINE_SITE ?>connexion.php"> <i class="bi bi-person-square"></i></a>
-                    <?php } ?>
+                        <a href="<?= RACINE_SITE ?>connexion.php"> <i class=" bi bi-person-square"></i></a>
+
+
+                    <?php }
+
+
+                    ?>
 
 
 
-                    <a href="<?= RACINE_SITE ?>panier.php"> <i class="bi bi-bag-fill"></i></a>
+                    <!-- <a href="<?= RACINE_SITE ?>panier.php"> <i class="bi bi-bag-fill"></i></a> -->
 
 
 

@@ -70,10 +70,7 @@ require_once "inc/header.inc.php";
                     <label for="mdp" class="form-label mb-3">Mot de passe</label>
                     <input value="" type="password" class="form-control fs-5 mb-3" id="mdp" name="mdp">
                 </div>
-                <div class=" mb-3 text-center">
-                    <label for="confirmMdp" class="form-label">Confirmez votre mot de passe</label>
-                    <input type="password" class="form-control" id="confirmMdp" name="confirmMdp" class="text-center">
-                </div>
+               
 
                 <div class="showPass">
                     <label for="showpassConfirm" class="text-white"><input type="checkbox" onclick="showPass()" id="showpassConfirm">Afficher/masquer le mot de passe</label>

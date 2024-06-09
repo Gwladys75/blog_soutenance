@@ -6,6 +6,13 @@ require_once "../inc/functions.inc.php";
 
 
 
+
+
+
+
+
+
+
 $title = "Utilisateurs";
 require_once "../inc/header.inc.php";
 ?>
@@ -17,11 +24,8 @@ require_once "../inc/header.inc.php";
         <thead>
             <tr>
                 <th>ID</th>
-                <th>first_name</th>
-                <th>last_name</th>
                 <th>Pseudo</th>
                 <th>Email</th>
-                <th>Phone</th>
                 <th>Role</th>
                 <th>Supprimer</th>
                 <th>Modifier</th>
@@ -40,17 +44,16 @@ require_once "../inc/header.inc.php";
         ?>
             <tr>
                 <td><?=$user['id']?></td>
-                <td><?=ucfirst($user['first_name'])?></td>
-                <td><?=ucfirst($user['last_name'])?></td>
                 <td><?=$user['pseudo']?></td>
                 <td><?=$user['email']?></td>
-                <td><?=$user['phone']?></td>
                 <td><?=$user['role']?></td>
                 <td class="text-center">
                     <a href="dashboard.php?users_php&action=delete&id=<?= $user['id']?>"><i class="bi bi-trash3-fill text-danger"></i></a>
+                   
                 </td>
                 <td class="text-center">
                     <a href="dashboard.php?users_php&action=update&id=<?= $user['id']?>" class="btn btn-danger"><?=($user['role']) == 'ROLE_ADMIN' ? 'Rôle user' : 'Rôle admin'?>
+                 
                 </td>
             </tr>
 

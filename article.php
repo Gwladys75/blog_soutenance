@@ -33,14 +33,14 @@ require_once "inc/header.inc.php";
         <img src="<?= RACINE_SITE . "assets/img/" . $post['image'] ?>" alt="Image de l'article" class="article-image" width="800">
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-5 pb-5">
       <div class="col-sm-12 para-center article-content">
         <p class="para-brown" style="text-align: justify;"><?= $post['content'] ?></p>
       </div>
 
     </div>
 
-    <div class="container-comment mt-5 pt-5">
+    <!-- <div class="container-comment mt-5 pt-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="mt-3 pt-3">
@@ -63,7 +63,7 @@ require_once "inc/header.inc.php";
       </div>
 
 
-    </div>
+    </div> -->
 
 
   </div>

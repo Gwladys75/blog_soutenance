@@ -4,6 +4,8 @@ require_once "inc/functions.inc.php";
 
 $title = "Histoire du Gwoka";
 
+$metadescription = "Blog ka Dans ka - Aux rythmes du ka";
+
 
 require_once "inc/header.inc.php";
 ?>
@@ -51,10 +53,10 @@ require_once "inc/header.inc.php";
 
 <!-- SECTION DEUXIEME PARAGRAPHE DEFINITION GWOKA -->
 
-<section class="para2">
-    <div class="brown p-5">
+<section class="">
+    <div class=" para-light p-5">
       <p>
-      Le Gwoka a été reconnu en 2014 comme patrimoine mondial de l'Humanité par l'UNESCO, soulignant ainsi son importance et sa valeur en tant qu'élément représentatif de la culture guadeloupéenne. Cette pratique rassemble plusieurs milliers de personnes lors d'événements festifs où chacun est invité à montrer ses talents d'improvisation. Le Gwoka accompagne les moments forts de la vie quotidienne en Guadeloupe, tels que les rassemblements populaires, les fêtes, les veillées funéraires et même les manifestations politiques et syndicales. Aujourd'hui, le Gwoka est pratiqué par l'ensemble de la société guadeloupéenne et s'étend également en France métropolitaine. Plus de 150 associations dédiées au Gwoka existent en Guadeloupe et en France, témoignant de l'engouement et de l'attachement des communautés à cette forme artistique profondément ancrée dans l'histoire et l'identité guadeloupéenne.
+      Le Gwoka a été reconnu en 2014 comme patrimoine mondial de l'Humanité par l'UNESCO, soulignant ainsi son importance et sa valeur en tant qu'élément représentatif de la culture guadeloupéenne. Cette pratique rassemble plusieurs milliers de personnes lors d'événements festifs où chacun est invité à montrer ses talents d'improvisation. Le Gwoka accompagne les moments forts de la vie quotidienne en Guadeloupe, tels que les rassemblements populaires, les fêtes, les veillées funéraires et même les manifestations politiques et syndicales. Aujourd'hui, le Gwoka est pratiqué par l'ensemble de la société guadeloupéenne et s'étend également en France métropolitaine. 
       </p>
     </div>
   </section>

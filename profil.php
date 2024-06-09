@@ -25,10 +25,10 @@ require_once "inc/header.inc.php";
 
 
 <main class="container mt-5 mb-5 pt-5 pb-5 text-center">
-    <h1 class="title-profil mt-5 pt-5">BIENVENUE SUR VOTRE PROFIL UTILISATEUR</h1>
+    <h1 class="title-profil mt-5 pt-5"> PROFIL UTILISATEUR</h1>
     <section class="row mt-5 mb-5 pt-5 pb-5 justify-content-center">
         <div class="col-md-8">
-            <img src="assets/img/julien.png" alt="Image de profil" class="img-fluid rounded-circle mb-3 mx-auto d-block">
+            <img src="assets/img/djembe.png" alt="Image de profil" class="img-fluid img-djembe rounded mb-3 mx-auto d-block">
             <div class="card">
                 <div class="card-header ">
                     <h5 class="card-title para-brown ">
@@ -41,7 +41,7 @@ require_once "inc/header.inc.php";
                 </div>
                 <div class="card-footer text-muted">
                     <a href="profil.php?action=deconnexion" class="btn">Me déconnecter</a>
-                    <a href="" class="btn">Modifier mon profil</a>
+                    <!-- <a href="" class="btn">Modifier mon profil</a> -->
                 </div>
             </div>
         </div>

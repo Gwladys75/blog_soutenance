@@ -13,7 +13,7 @@ if (!isset($_SESSION['user'])) {
 }
 
 if ($_SESSION['user']['role'] == 'ROLE_USER') {
-    header("location:". RACINE_SITE. "histoire_du_gwo_ka.php");
+    header("location:". RACINE_SITE. "index.php");
    
 }
 
@@ -21,11 +21,12 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     if (!empty($_GET['action']) && $_GET['action'] == 'delete' &&!empty($_GET['id'])) {
         $idPost = $_GET['id'];
         deletePost($idPost);
-        header("location:". RACINE_SITE. "gestions_posts.php");
+        header("location:". RACINE_SITE. "admin/posts.php");
 
     } elseif (!empty($_GET['action']) && $_GET['action'] == 'update' &&!empty($_GET['id'])) {
         $idPost = $_GET['id'];
         $post = showPost($idPost);
+        header("location:". RACINE_SITE. "admin/posts.php");
     }
 }
 

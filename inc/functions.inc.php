@@ -89,7 +89,8 @@ function logOut()
 
         //session_destroy(); // Détruit toutes les données de la session déjà  établie . cette fonction détruit la session sur le serveur 
 
-        header("location:" . RACINE_SITE . "histoire_du_gwo_ka.php");
+        header("location:" . RACINE_SITE . "index.php");
+     
     }
 }
 // logOut();
@@ -124,24 +125,22 @@ function logOut()
 
 //////////////////// Fonctions du CRUD pour les utilisateurs Users /////////////////////
 
-function inscriptionUsers(string $first_name, string $last_name, string $pseudo, string $email, string $mdp, string $phone) : void
+function inscriptionUsers(string $pseudo, string $email, string $mdp) : void
 {
 
     $pdo = connexionBdd(); // je stock ma connexion  à la BDD dans une variable
 
     $sql = "INSERT INTO users 
-        (first_name, last_name, pseudo, email, mdp, phone)
+        (pseudo, email, mdp)
         VALUES
-        (:first_name, :last_name, :pseudo, :email, :mdp, :phone)"; // Requête d'insertion que je stock dans une variable
+        (:pseudo, :email, :mdp)"; // Requête d'insertion que je stock dans une variable
     $request = $pdo->prepare($sql); // Je prépare ma requête et je l'exécute
     $request->execute(
         array(
-            ':first_name' => $first_name,
-            ':last_name' => $last_name,
             ':pseudo' => $pseudo,
             ':email' => $email,
-            ':mdp' => $mdp,
-            ':phone' => $phone
+            ':mdp' => $mdp
+         
 
         )
     );
@@ -183,15 +182,13 @@ function checkPseudoUser(string $pseudo)
 /////////// Fonction pour vérifier un utilisateur ////////////////////
 
 
-function checkUser( string $pseudo, string $email): mixed
+function checkUser(string $pseudo): mixed
 {
-
     $pdo = connexionBdd();
-    $sql = "SELECT * FROM users WHERE pseudo = :pseudo AND email = :email";
+    $sql = "SELECT * FROM users WHERE pseudo = :pseudo";
     $request = $pdo->prepare($sql);
     $request->execute(array(
-        ':pseudo' => $pseudo,
-        ':email' => $email
+        ':pseudo' => $pseudo
     ));
     $resultat = $request->fetch();
     return $resultat;
@@ -245,6 +242,8 @@ function deleteUser(int $id): void
 }
 
 
+// FONCTION POUR MODIFIER LE ROLE
+
 function updateRole( string $role, int $id): void
 {
     $pdo = connexionBdd();
@@ -256,6 +255,10 @@ function updateRole( string $role, int $id): void
 
     ));
 }
+
+
+
+
 
 
 //////FONCTIONS AJOUT POST (ARTICLES)////

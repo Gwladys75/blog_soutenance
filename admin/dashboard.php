@@ -12,6 +12,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         $idUser = htmlentities($_GET['id']);
 
         deleteUser($idUser);
+        // header("location:" . RACINE_SITE . "admin/users.php");
     }
 }
 
@@ -19,10 +20,12 @@ if (!empty($_GET['action']) && $_GET['action'] == 'update' && !empty($_GET['id']
     $user = showUser($_GET['id']);
     if ($user['role'] == 'ROLE_ADMIN') {
         updateRole('ROLE_USER', $user['id']);
+        header("location:" . RACINE_SITE . "admin/users.php");
     }
 
     if ($user['role'] == 'ROLE_USER') {
         updateRole('ROLE_ADMIN', $user['id']);
+        header("location:" . RACINE_SITE . "admin/users.php");
     }
 }
 
@@ -31,7 +34,7 @@ if (!isset($_SESSION['user'])) {
     header("location:" . RACINE_SITE . "connexion.php");
 } else {
     if ($_SESSION['user']['role'] == 'ROLE_USER') {
-        header("location:" . RACINE_SITE . "histoire_du_gwo_ka.php");
+        header("location:" . RACINE_SITE . "index.php");
     }
 }
 
@@ -53,16 +56,22 @@ require_once "../inc/header.inc.php";
     <div class="container mt-5 pt-5 ">
         <div class="row justify-content-center mt-5 mb-5 pt-5 pb-5">
             <div class="col-12 text-center">
-                <?php
-                if (isset($_GET['dashboard_php'])) :
-                ?>
-                    <h2 class="">Bonjour <?= $_SESSION['user'] ?></h2>
+            <?php
+            if ( isset( $_GET['dashboard_php'] ) ) :
+        ?>
 
-                <?php
-                endif;
-                ?>
+        <div class="w-50 m-auto">
+            <h2>Bonjour <?php echo $_SESSION['user']['pseudo']?></h2>
 
-                <p class="title">Bienvenue sur le backoffice</p>
+           
+        </div>
+
+        <?php
+        
+            endif;
+
+        ?>
+
            
             </div>
         </div>
@@ -72,15 +81,11 @@ require_once "../inc/header.inc.php";
                     <hr>
 
                     <ul class="nav  ">
-                        <li>
-                            <a href="<?= RACINE_SITE ?>admin/dashboard.php" class="nav-link text-light">Backoffice</a>
-                        </li>
+            
                         <li>
                             <a href="<?= RACINE_SITE ?>admin/posts.php" class="nav-link text-light">Articles</a>
                         </li>
-                        <li>
-                            <a href="<?= RACINE_SITE ?>admin/cd.php" class="nav-link text-light">CD</a>
-                        </li>
+                        
                         <li>
                             <a href="<?= RACINE_SITE ?>admin/users.php" class="nav-link text-light">Utilisateurs</a>
                         </li>

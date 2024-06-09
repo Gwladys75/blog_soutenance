@@ -1,6 +1,4 @@
-function showPass() {
-//    let password = document.getElementById("mdp");
-//   let confirmMdp = document.getElementById("confirmMdp");
+function showPass() {;
 
     if (mdp.type === "password") {
         mdp.type = "text";
@@ -14,6 +12,35 @@ function showPass() {
         
     }
 }
+
+
+
+// AFFICHE LE TEXTE INSCRIPTION ET CONNEXION SUR LES ICONES  
+
+let icon = document.querySelector('i.bi.bi-person-fill-add');
+
+icon.addEventListener('mouseover', function() {
+  icon.title = 'Inscription';
+});
+
+icon.addEventListener('mouseout', function() {
+  icon.title = '';
+});
+
+
+let icon2 = document.querySelector('i.bi.bi-person-square');
+
+icon2.addEventListener('mouseover', function() {
+  icon2.title = 'Connexion';
+});
+
+icon2.addEventListener('mouseout', function() {
+  icon2.title = '';
+});
+
+
+
+
 
 
 // const searchIcon = document.querySelector('.search-icon');
