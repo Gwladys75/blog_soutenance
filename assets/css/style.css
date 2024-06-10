@@ -505,15 +505,9 @@ transform : rotate(15deg);
   transform: rotateY(180deg);
 }
 
-/* .flip-container,
-.front,
-.back,
-img {
-  width: 320px;
-  height: 480px;
-} */
 
-/* flip speed */
+
+/* flip vitesse */
 
 .flipper {
   transition: 1.5s;
@@ -521,7 +515,6 @@ img {
   position: relative;
 }
 
-/* hide back  during flip */
 
 .front,
 .back {
@@ -536,7 +529,7 @@ img {
 /* BACK = le dos des images, le texte*/
 .back {
   transform: rotateY(180deg);
-  background:var(--marron-clair);
+  background:var(--marron-jaune);
   height: 9.0em;
   border-radius: 10px;
   

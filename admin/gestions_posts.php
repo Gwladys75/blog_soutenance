@@ -22,12 +22,15 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         $idPost = $_GET['id'];
         deletePost($idPost);
         header("location:". RACINE_SITE. "admin/posts.php");
+       
 
     } elseif (!empty($_GET['action']) && $_GET['action'] == 'update' &&!empty($_GET['id'])) {
         $idPost = $_GET['id'];
         $post = showPost($idPost);
-        header("location:". RACINE_SITE. "admin/posts.php");
+        
     }
+
+    
 }
 
 if (!empty($_POST)) {
@@ -40,6 +43,7 @@ if (!empty($_POST)) {
     if (isset($_GET['action']) && $_GET['action'] == 'update' &&!empty($_GET['id'])) {
         move_uploaded_file($_FILES['image']['tmp_name'], '../assets/img/'. $image);
         updatePost($idPost, $image, $title, $content, $author, $created_at);
+        $info = alert("Vous avez modifier un article!", "success");
         
       
     } else {
@@ -47,7 +51,13 @@ if (!empty($_POST)) {
         addPosts($image, $title, $content, $author, $created_at);
         $info = alert("Vous avez ajouté un article!", "success");
     }
+
+
 }
+
+
+
+
 
 require_once '../inc/header.inc.php';
 // echo $info;
@@ -64,7 +74,7 @@ require_once '../inc/header.inc.php';
         echo $info;
         ?>
         <form action="#" method="post" enctype="multipart/form-data">
-          <div class="mb-3 mt-4 pt-4 text-center">
+          <div class="mb-3 mt-4 pt-4 text-center text-white">
             <label for="image" class="form-label">Image article</label>
             <?= isset($post['image']) ?  "<strong><span style='color: #FFFFFF;'>ancienne: </span></strong>" . $post['image'] : "" ?>
             <input type="file" class="form-control" id="image" name="image" value="<?= $post['image'] ?? '' ?>">
@@ -74,8 +84,8 @@ require_once '../inc/header.inc.php';
             <input type="date" class="form-control" id="created_at" name="created_at" value="<?= $post['created_at'] ?? '' ?>">
           </div>
           <div class="mb-3 text-center">
-            <label for="content " class="form-label">Auteur de l'article</label>
-            <textarea class="form-control" id="author" placeholder="Entrez le nom de l'auteur de l'article" name="author" value="<?= $post['author'] ?? '' ?>"></textarea>
+            <label for="author" class="form-label">Auteur de l'article</label>
+            <input class="form-control" id="author" placeholder="Entrez le nom de l'auteur de l'article" name="author" value="<?= $post['author'] ?? '' ?>">>
           </div>
           <div class="mb-3 text-center">
             <label for="title " class="form-label">Titre article</label>

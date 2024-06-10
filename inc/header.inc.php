@@ -1,12 +1,14 @@
 <?php
 
-// 1 - Connexion à la BDD via la page function
+// 1 - Connexion à la BDD via la page functions
 require_once "functions.inc.php";
 
 // déconnexion ($_SESSION)
 logOut();
+
+
 // unset($sf2_meta);
-// unset($_SESSION);
+// unset($_SESSION); détruit la variable 
 ?>
 
 <!DOCTYPE html>
@@ -45,76 +47,87 @@ logOut();
 
 <body>
 
-    <header>
-        <!-- Barre de navigation bootstrap menus, sous menu, inscription, dashboard, panier -->
+<header>
+  <!-- Barre de navigation bootstrap avec menus, sous-menus, inscription, connexion, déconnexion, dashboard, etc. -->
 
-        <nav class="navbar fixed-top navbar-expand-lg navigation w-100">
-            <div class="container-fluid">
+  <nav class="navbar fixed-top navbar-expand-lg navigation w-100">
+    <div class="container-fluid">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center " id="navbarNavDropdown">
-                    <div class="logo">
-                        <a href="<?= RACINE_SITE ?>index.php"> <img src="<?= RACINE_SITE ?>assets/img/logo_ka_dans_ka.png" alt="logo"></a>
-                    </div>
+      <!-- Bouton de toggle pour afficher/masquer le menu sur les écrans petits -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-                    <ul class="navbar-nav">
+      <!-- Contenu du menu -->
+      <div class="collapse navbar-collapse justify-content-center " id="navbarNavDropdown">
+        <div class="logo">
+          <!-- Logo du site -->
+          <a href="<?= RACINE_SITE?>index.php"> <img src="<?= RACINE_SITE?>assets/img/logo_ka_dans_ka.png" alt="logo"></a>
+        </div>
 
-                        <li class="nav-item">
-                            <a class="nav-link .underline" aria-current="page" href="<?= RACINE_SITE ?>index.php">Histoire du Gwoka</a>
-                        </li>
+        <!-- Liste des éléments de menu -->
+        <ul class="navbar-nav">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= RACINE_SITE ?>les_7_rythmes.php">Les 7 rythmes</a>
-                        </li>
-                        <!-- MENU DROPDOWN pour le blog et articles -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="<?= RACINE_SITE ?>blog.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Blog
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= RACINE_SITE ?>blog.php">Histoire du blog</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item d-flex">
-                            <a class="nav-link" href="<?= RACINE_SITE ?>cd.php">CD</a>
-                            <i class="bi bi-disc-fill"></i>
-                        </li>
+          <!-- Élément de menu : Histoire du Gwoka -->
+          <li class="nav-item">
+            <a class="nav-link.underline" aria-current="page" href="<?= RACINE_SITE?>index.php">Histoire du Gwoka</a>
+          </li>
+
+          <!-- Élément de menu : Les 7 rythmes -->
+          <li class="nav-item">
+            <a class="nav-link" href="<?= RACINE_SITE?>les_7_rythmes.php">Les 7 rythmes</a>
+          </li>
+
+          <!-- Menu dropdown pour le blog et les articles -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="<?= RACINE_SITE?>blog.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Blog
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="<?= RACINE_SITE?>blog.php">Histoire du blog</a></li>
+            </ul>
+          </li>
+
+          <!-- Élément de menu : CD -->
+          <li class="nav-item d-flex">
+            <a class="nav-link" href="<?= RACINE_SITE?>cd.php">CD</a>
+            <i class="bi bi-disc-fill"></i>
+          </li>
+
+          <!-- Éléments de menu pour l'administration et le profil utilisateur -->
+          <?php if (isset($_SESSION['user'])) {?>
+            <?php if ($_SESSION['user']['role'] == 'ROLE_ADMIN') {?>
+              <!-- Élément de menu : Backoffice (visible uniquement pour les administrateurs) -->
+              <li class="nav-item">
+                <a class="nav-link" href="<?= RACINE_SITE?>admin/dashboard.php">Backoffice</a>
+              </li>
+            <?php }?>
+            <!-- Élément de menu : Compte (visible uniquement pour les utilisateurs connectés) -->
+            <li class="nav-item">
+              <a class="nav-link" href="<?= RACINE_SITE?>profil.php">Compte <sup class="badge rounded-pill text-bg-warning ms-2 fs-6">
+                <?= $_SESSION['user']['pseudo']?></sup></a>
+            </li>
+            <!-- Élément de menu : Déconnexion (visible uniquement pour les utilisateurs connectés) -->
+            <li class="nav-item">
+              <a href="?action=deconnexion"><i class="bi bi-box-arrow-right"></i></a>
+            </li>
+          <?php } else {?>
+            <!-- Éléments de menu pour l'inscription et la connexion -->
+            <a href="<?= RACINE_SITE?>inscription.php"> <i class="bi bi-person-fill-add"></i></a>
+            <a href="<?= RACINE_SITE?>connexion.php"> <i class="bi bi-person-square"></i></a>
+          <?php }?>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
 
 
 
 
-                        <!-- BackOffice -->
-                        <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'ROLE_ADMIN') { ?>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= RACINE_SITE ?>dashboard.php">Backoffice</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="index.php?action=deconnexion"><i class="bi bi-box-arrow-right"></i></a>
-
-                            </li>
-                            <li>
-                                <a class="nav-link" href="<?= RACINE_SITE ?>profil.php">Compte <sup class="badge rounded-pill text-bg-danger ms-2 fs-6"><?= $_SESSION['user']['pseudo'] ?></sup></a>
-                            </li>
 
 
-                            <?php } ?>
-                    </ul>
-                    <?php if (!isset($_SESSION['user'])) { ?>
-                        <!-- Icones -->
-                        <a href="<?= RACINE_SITE ?>inscription.php"> <i class="bi bi-person-fill-add"></i></a>
-                        <a href="<?= RACINE_SITE ?>connexion.php"> <i class=" bi bi-person-square"></i></a>
-
-
-                    <?php }
-
-
-                    ?>
-
-
+                    <!-- ////////////////////////////POUR EVOLUTION DU BLOG/////////////////////////// -->
 
                     <!-- <a href="<?= RACINE_SITE ?>panier.php"> <i class="bi bi-bag-fill"></i></a> -->
 

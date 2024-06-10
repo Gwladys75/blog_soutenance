@@ -1,9 +1,10 @@
-<!-- Fichier qui contient les fonctions php à utiliser dans notre site -->
+<!-- Fichier qui contient les fonctions php à utiliser dans mon blog  -->
 <?php
 
 session_start();
 
-define("RACINE_SITE","/ka_dans_ka/"); // constante qui définit les dossiers dans lesquels se situe le site pour pouvoir déterminer des chemin absolus à partir de localhost (on ne prend pas locahost). Ainsi nous écrivons tous les chemins (exp : src, href) en absolus avec cette constante.
+define("RACINE_SITE","/ka_dans_ka/"); 
+// constante qui définit les dossiers dans lesquels se situe le site pour pouvoir déterminer des chemin absolus à partir de localhost (on ne prend pas locahost). Ainsi nous écrivons tous les chemins (exp : src, href) en absolus avec cette constante.
 
 
 
@@ -93,33 +94,7 @@ function logOut()
      
     }
 }
-// logOut();
-
-
-
-
-
-//creation table commentaires//
-
-// function createTableComment()
-// {
-
-//     $pdo = connexionBdd();
-    
-//     $sql= "CREATE TABLE IF NOT EXISTS comments (
-//     id INT AUTO_INCREMENT PRIMARY KEY,
-//     post_id INT NOT NULL,
-//     user_id INT NOT NULL,
-//     content TEXT NOT NULL,
-//     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-//     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-//     FOREIGN KEY (post_id) REFERENCES Posts(id),
-//     FOREIGN KEY (user_id) REFERENCES Users(id)
-//   )";
-
-//   $request = $pdo->exec($sql);
-
-// }
+logOut();
 
 
 
@@ -258,10 +233,7 @@ function updateRole( string $role, int $id): void
 
 
 
-
-
-
-//////FONCTIONS AJOUT POST (ARTICLES)////
+//////FONCTION AJOUT POST (ARTICLES)////
 
 function addPosts(string $image, string $title, string $content, string $author, string $created_at): void
 {
@@ -273,19 +245,17 @@ function addPosts(string $image, string $title, string $content, string $author,
     $request = $pdo->prepare($sql);
     $request->execute(array(
 
-
         ':image' => $image,
         ':title' => $title,
         ':content' => $content,
         ':author' => $author,  
-        'created_at' => $created_at
-        
+        ':created_at' => $created_at
+   
     ));
 
 }
 
-
-// FONCTIONS POUR AFFICHER TOUTES LES ARTICLES 
+// FONCTION POUR AFFICHER TOUTES LES ARTICLES 
 
 function allPosts() {
 
@@ -308,7 +278,7 @@ function updatePost(int $id, string $image, string $title, string $content, stri
                         content = :content, 
                         author = :author, 
                         created_at = :created_at 
-                    WHERE id = :id"; // you need to add a WHERE clause to specify which post to update
+                    WHERE id = :id"; 
     $request = $pdo->prepare($sql);
     $request->execute(array (
         ':id' => $id,
@@ -347,8 +317,6 @@ function showPost(int $id): array
     $result = $request->fetch();
     return $result;
 }
-
-
 
 
 
