@@ -62,7 +62,7 @@ logOut();
       <div class="collapse navbar-collapse justify-content-center " id="navbarNavDropdown">
         <div class="logo">
           <!-- Logo du site -->
-          <a href="<?= RACINE_SITE?>index.php"> <img src="<?= RACINE_SITE?>assets/img/logo_ka_dans_ka.png" alt="logo"></a>
+          <a href="<?= RACINE_SITE?>index.php"> <img src="<?= RACINE_SITE?>assets/img/logo_ka_dans_ka.png" alt="logo ka_dans_ka"></a>
         </div>
 
         <!-- Liste des éléments de menu -->

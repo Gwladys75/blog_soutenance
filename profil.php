@@ -12,6 +12,8 @@ if (empty($_SESSION['user'])) {
     
 }
 
+
+
 $title = "Profil";
 
 // Inclusion du header
@@ -21,7 +23,7 @@ require_once "inc/header.inc.php";
 <!-- Début du container principal -->
 <main class="container mt-5 mb-5 pt-5 pb-5 text-center">
     <!-- Titre de la page -->
-    <h1 class="title-profil mt-5 pt-5"> PROFIL UTILISATEUR</h1>
+    <h1 class=" title title-profil mt-5 pt-5"> PROFIL UTILISATEUR</h1>
     <!-- Section contenant les informations du profil -->
     <section class="row mt-5 mb-5 pt-5 pb-5 justify-content-center">
         <div class="col-md-8">

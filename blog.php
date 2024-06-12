@@ -6,6 +6,10 @@ require_once "inc/functions.inc.php";
 $articles = allPosts();
 
 
+
+$metadescription = "Explorez la riche tradition du gwoka à travers les centaines d'articles de notre blog : histoire, rythmes, instruments, figures marquantes et actualités de cette musique emblématique de la Guadeloupe";
+
+
 $title = "Blog";
 
 require_once "inc/header.inc.php";
@@ -37,7 +41,7 @@ require_once "inc/header.inc.php";
           <div class="col-md-4 mb-5 pb-5">
             <div class="card" data-aos="zoom-out-up">
              
-              <img src="<?= RACINE_SITE. "assets/img/". $article['image']?>" class="card-img-top" alt="Image 1">
+              <img src="<?= RACINE_SITE. "assets/img/". $article['image']?>" class="card-img-top" alt="Image de l'article">
               <div class="card-body">
                 <!-- Informations de l'article (auteur, date de création) -->
                 <div class="d-flex justify-content-between">

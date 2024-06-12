@@ -33,7 +33,7 @@ if (!empty($_POST)) {
   // Si un champ est vide, on affiche un message d'erreur
   if (!$verif) {
     // debug($_POST); // Affichage des données du formulaire pour débogage
-    $info = alert("Veuillez renseigner tout les champs", "danger");
+    $info .= alert("Veuillez renseigner tout les champs", "danger");
     echo $info;
   } else {
     // Récupération des données du formulaire
@@ -70,7 +70,7 @@ if (!empty($_POST)) {
 
       if ($emailExist || $pseudoExist) {
         // Si l'email ou le pseudo existe déjà, on ajoute un message d'erreur
-        $info = alert("Vous avez déjà un compte", "danger");
+        $info .= alert("Vous avez déjà un compte", "danger");
       } else if ($mdp !== $confirmMdp) {
         // Si le mot de passe et la confirmation ne sont pas identiques, on ajoute un message d'erreur
         $info .= alert("Le mot de passe et la confirmation doivent être identiques.", "danger");
@@ -82,8 +82,10 @@ if (!empty($_POST)) {
         inscriptionUsers($pseudo, $email, $mdp);
 
         // Affichage d'un message de succès et redirection vers la page de connexion
-        $info = alert('Vous êtes bien inscrit, vous pouvez vous connectez !', 'success');
         header('Location:' . RACINE_SITE . 'connexion.php');
+
+        $info.= alert("Vous êtes bien inscrit, vous pouvez vous connectez !", "success");
+
       }
     }
   }

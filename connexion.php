@@ -23,7 +23,7 @@ if (!empty($_POST)) {
     // Si tous les champs ne sont pas remplis, on affiche un message d'erreur
     if (!$verif) {
         // debug($_POST); // Affichage des données du formulaire pour débogage
-        $info = alert("Veuillez renseigner tout les champs", "danger"); // Message d'erreur
+        $info .= alert("Veuillez renseigner tout les champs", "danger"); // Message d'erreur
     } else {
         // Récupération des données du formulaire
         $pseudo = isset($_POST['pseudo'])? $_POST['pseudo'] : null;
@@ -41,10 +41,10 @@ if (!empty($_POST)) {
                 // Redirection vers la page de profil
                 header("location:". RACINE_SITE. "profil.php");
             } else {
-                $info = alert("Les identifiants sont incorrectes", "danger"); // Message d'erreur
+                $info .= alert("Les identifiants sont incorrectes", "danger"); // Message d'erreur
             }
         } else {
-            $info = alert("Les identifiants sont incorrectes", "danger"); // Message d'erreur
+            $info .= alert("Les identifiants sont incorrectes", "danger"); // Message d'erreur
         }
     }
 }

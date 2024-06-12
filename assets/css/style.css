@@ -78,8 +78,6 @@ nav a {
   width: 10% !important;
   
 
- /* padding-top: 5px;
- margin-top: 20px; */
 }
 
 .nav-item {
@@ -93,9 +91,6 @@ nav a {
   font-weight: 800;
 }
 
-/* .active {
-  color:chocolate;
-} */
 
 a.nav-link-toggler
 
@@ -115,7 +110,7 @@ a.nav-link-toggler
 
 
 
-/* icones */
+/* ICONES */
 .bi-disc-fill,
 .bi-person-square,
 .bi-bag-fill,
@@ -206,7 +201,7 @@ p  {
   backdrop-filter: blur(2px);
   font-family: "Rosario", sans-serif;
   font-weight: bolder;
-  /* text-shadow: 1px 1px 2px black; */
+  text-shadow: 1px 1px 2px black;
   padding: 30px;
   color:var(--blanc);
 
@@ -266,7 +261,7 @@ a:hover{
 
 .title {
   font-size: 50px;
-  text-align: center;
+  /* text-align: center; */
   padding: 0;
   margin: 0;
   margin-left: 50%;

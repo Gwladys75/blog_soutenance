@@ -65,17 +65,19 @@ function debug($var)
 
 // FUNCTION  ALERT
 
+
 function alert(string $contenu, string $class)
 {
-
+    // Retourne le code HTML pour afficher le message d'alerte
     return "<div class='alert alert-$class alert-dismissible fade show text-center w-75 m-auto mb-5' role='alert'>
+        <!-- Contenu du message d'alerte -->
         $contenu
 
-            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        <!-- Bouton pour fermer l'alerte -->
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
 
-        </div>";
+    </div>";
 }
-
 //// FONCTION DE DECONNEXION //
 
 
@@ -86,7 +88,7 @@ function logOut()
 
 
         unset($_SESSION['user']);
-        // On supprime l'indice "user " de la session pour se déconnecter // cette fonction détruit les variables  stocké  comme 'firstName' et 'email'.
+        // On supprime l'indice "user " de la session pour se déconnecter 
 
         //session_destroy(); // Détruit toutes les données de la session déjà  établie . cette fonction détruit la session sur le serveur 
 
@@ -219,15 +221,22 @@ function deleteUser(int $id): void
 
 // FONCTION POUR MODIFIER LE ROLE
 
-function updateRole( string $role, int $id): void
-{
-    $pdo = connexionBdd();
-    $sql = "UPDATE users SET role = :role WHERE id = :id";
-    $request = $pdo->prepare($sql);
-    $request->execute(array(
-        ':role' => $role,
-        ':id' => $id
 
+function updateRole(string $role, int $id): void
+{
+    // Établissement de la connexion à la base de données
+    $pdo = connexionBdd();
+    
+    // Définition de la requête SQL pour mettre à jour le rôle de l'utilisateur
+    $sql = "UPDATE users SET role = :role WHERE id = :id";
+    
+    // Préparation de la requête SQL pour éviter les injections SQL
+    $request = $pdo->prepare($sql);
+    
+    // Exécution de la requête avec les paramètres $role et $id
+    $request->execute(array(
+        ':role' => $role, // Affectation du nouveau rôle à la variable :role
+        ':id' => $id // Affectation de l'identifiant de l'utilisateur à la variable :id
     ));
 }
 
@@ -261,11 +270,15 @@ function allPosts() {
 
     $pdo = connexionBdd();
     
-    $sql = "SELECT * FROM posts";
+    $sql = "SELECT * FROM posts ORDER BY id ASC";
     $request = $pdo->query($sql);
     $result = $request->fetchAll();
     return $result;
 }
+
+
+
+
 
 // FONCTION POUR MODIFIER UN ARTICLE 
 

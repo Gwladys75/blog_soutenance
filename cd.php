@@ -34,7 +34,7 @@ require_once "inc/header.inc.php";
 
         <div class="mt-5 pt-5">
 
-          <h2 class="text-center cd"> DECOUVREZ LES CD DE GWOKA! </h2>
+          <h1 class=" title mt-5 pt-5 mb-5 pb-5"> DECOUVREZ LES CD DE GWOKA! </h1>
         </div>
         <!-- Conteneur pour les produits -->
         <div class="container">
@@ -45,7 +45,7 @@ require_once "inc/header.inc.php";
 
               <div class="card">
 
-                <img src="assets/img/CD1.jpg" class="card-img-top" alt="Produit 1">
+                <img src="assets/img/CD1.jpg" class="card-img-top" alt="image album cd1">
 
                 <div class="card-body">
 
@@ -71,7 +71,7 @@ require_once "inc/header.inc.php";
 
               <div class="card">
 
-                <img src="assets/img/CD2.jpg" class="card-img-top" alt="Produit 1">
+                <img src="assets/img/CD2.jpg" class="card-img-top" alt="Image album cd2">
 
                 <div class="card-body">
 

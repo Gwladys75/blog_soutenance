@@ -10,6 +10,8 @@ if (isset($_GET) && !empty($_GET)) {
 }
 
 
+$metadescription = "Plongez dans les racines du gwoka, musique et danse traditionnelles guadeloupéennes, à travers des articles approfondis sur son histoire, ses rythmes et figures marquantes";
+
 $title = "Article";
 
 
@@ -24,7 +26,7 @@ require_once "inc/header.inc.php";
     <div class="row mt-5 pt-5 mb-5 pb-5">
 
       
-      <div class="col-sm-12">
+      <div class="col-sm-12 mb-5 pt-5">
         <h1 class="article-title"><?= ucfirst($post['title']) ?></h1>
       </div>
       <div class="d-flex justify-content-around">
@@ -34,7 +36,7 @@ require_once "inc/header.inc.php";
     </div>
 
     <div class="row ">
-      <div class="col-sm-12">
+      <div class="col-sm-12 mt-5 mb-5">
         <img src="<?= RACINE_SITE . "assets/img/" . $post['image'] ?>" alt="Image de l'article" class="article-image" width="800">
       </div>
     </div>
@@ -42,6 +44,7 @@ require_once "inc/header.inc.php";
     <div class="row mb-5 pb-5">
       <div class="col-sm-12 para-center article-content">
         <p class="para-brown" style="text-align: justify;"><?= $post['content'] ?></p>
+        
       </div>
     </div>
   </div>

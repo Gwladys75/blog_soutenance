@@ -14,7 +14,7 @@ require_once "inc/header.inc.php";
 
     <main>
         <div class="en-tete m-5 p-5">
-        <h1 class="title mt-5 pt-5">Les 7 Rythmes du Gwo Ka</h1>
+        <h1 class="title mt-5 mb-5 pt-5">Les 7 Rythmes du Gwo Ka</h1>
             <p class="para-center p-3"> 
             Le Gwoka, danse traditionnelle de la Guadeloupe, est rythmé par sept rythmes distincts qui incarnent l'essence même de cette pratique culturelle emblématique. Chaque rythme porte en lui une histoire, une émotion et une signification profonde, contribuant à la richesse et à la diversité de cette forme artistique unique.
             </p>
